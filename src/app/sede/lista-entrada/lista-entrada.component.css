@@ -1,0 +1,8 @@
+.table-responsive{
+  overflow-y: scroll;
+  height: 75vh;
+  overflow-x: hidden;
+}
+
+
+

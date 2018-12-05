@@ -1,0 +1,9 @@
+{
+  "editor.wrappingIndent": "none",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "editor.autoClosingQuotes": "always",
+  "files.autoSave": "onFocusChange",
+  "editor.fontSize": 15,
+  "editor.wordWrap": "on"
+}

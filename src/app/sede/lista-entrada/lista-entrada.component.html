@@ -1,0 +1,39 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 m-auto mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <div class="row col-12">
+          <div class="col-4">
+            <div class="col-8">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed table-striped table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th>sede</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Documento</th>
+              <th>Hora entrada</th>
+              <th>Hora salida</th>
+              <th>horas trabajo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center" *ngFor="let usuario of entradas">
+              <td>{{usuario.nom_sede}}</td>
+              <td>{{usuario.nombres}}</td>
+              <td>{{usuario.apellidos}}</td>
+              <td>{{usuario.documento_empleado}}</td>
+              <td>{{usuario.entrada | date:'medium' }}</td>
+              <td>{{usuario.salida | date:'medium' }}</td>
+              <td>{{usuario.dif}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

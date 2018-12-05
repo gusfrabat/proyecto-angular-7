@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+.activado {
+  background: rgba(143, 142, 142, 0.1);
+  border-radius: 10px;
+  font-size: 15px;
+}

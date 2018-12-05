@@ -1,0 +1,71 @@
+<div class="col-12 d-flex justify-content-between conteenedor">
+  <div class="col-8">
+    <hr>
+    <h5 class="text-center text-black-50">{{usuario}}</h5>
+    <hr>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">usuario</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Rol</th>
+            <th class="text-center">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>nombre</td>
+            <td>********</td>
+            <td>rol</td>
+            <td class="form-inline d-flex justify-content-around">
+              <button class="btn btn-sm btn-outline-warning">X</button>
+            </td>
+<!--        <td class=" d-flex justify-content-around">
+            <button class="btn btn-sm btn-warning">X</button>
+            <button class="btn btn-sm btn-danger">Conf</button>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-4 mx-auto separar">
+    <div class="col-12 contenedor-agenda">
+      <hr>
+      <h5 class="text-center text-black-50">{{titulo}}</h5>
+      <hr>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="nombre">Usuario:</label>
+            <input class="form-control" type="text" id="nombre"
+              placeholder="Usuario" required>
+          </div>
+          <div class="form-group col-12">
+            <label for="nameC">Contraseña:</label>
+            <input  id="nameC" type="password" class="form-control"
+              placeholder="Contraseña" required autocomplete="off">
+          </div>
+          <div class="form-group col-6">
+            <label>Rol:</label>
+            <select class="form-control" required>
+            <option disabled selected value="">Roles</option>
+            <option *ngFor="let item of roles" value="{{item.id_rol}}">{{item.nom_rol}}</option>
+          </select>
+          </div>
+          <div class="form-group col-6">
+            <label>Documento Empleado:</label>
+            <select class="form-control" required>
+              <option disabled selected value="">Documento empleado</option>
+              <option *ngFor="let empleado of empleados" value="{{empleado.documento}}">{{empleado.documento}}-{{empleado.nombres}}-{{empleado.apellidos}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-success">Agregar contacto</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
