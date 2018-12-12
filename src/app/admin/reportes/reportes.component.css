@@ -1,0 +1,11 @@
+/* Hide the browser's default checkbox */
+.container input {
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+}
+
+.container {
+  margin: 5px;
+  cursor: pointer;
+}

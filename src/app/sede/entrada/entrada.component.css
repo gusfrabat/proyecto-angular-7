@@ -4,8 +4,11 @@
   background: #fff;
   border-radius: 15px;
   box-shadow: 1px 2px #cccc;
-  padding: 10px;
+  padding: 15px;
 }
 
+.inputfull {
+  width:  100%;
+}
 
 /* soporte en calidad de una impresora */

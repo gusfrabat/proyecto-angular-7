@@ -1,27 +1,50 @@
-<div class="col-12 d-flex justify-content-between conteenedor">
-  <div class="col-8">
+<div class="col-12">
+  <div class="col-12">
     <hr>
     <h5 class="text-center text-black-50">{{usuario}}</h5>
     <hr>
+    <div class="col-12 d-flex justify-content-around form-group">
+      <div>
+        <button class="btn btn-outline-info d-flex justify-content-end" (click)="open(content)">Nuevo usuario <mat-icon
+            class="ml-2">person_add</mat-icon></button>
+      </div>
+      <form #formFlitroUS="ngForm" (ngSubmit)="filtro()" >
+        <div class="d-flex justify-content-between">
+          <input type="number" placeholder="filtro por documento" class="form-control" matInput #documento="ngModel" name="documento" [(ngModel)]="Filtro.documento">
+          <button class="btn btn-sm btn-outline-success d-flex justify-content-center">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
     <div class="table-responsive">
-      <table class="table table-hover">
+      <table class="table table-a table-hover">
         <thead>
-          <tr>
-            <th scope="col">usuario</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Rol</th>
-            <th class="text-center">Accion</th>
+          <tr class="text-center">
+            <th>Usuario</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Documento</th>
+            <th>Rol</th>
+            <th>Accion</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>nombre</td>
-            <td>********</td>
-            <td>rol</td>
-            <td class="form-inline d-flex justify-content-around">
-              <button class="btn btn-sm btn-outline-warning">X</button>
+          <tr class="text-center" *ngFor="let usu of usuarios; let i=index">
+            <td>{{usu.usuario}}</td>
+            <td>{{usu.nombres}}</td>
+            <td>{{usu.apellidos}}</td>
+            <td>{{usu.documento}}</td>
+            <td>{{usu.nom_rol}}</td>
+            <td class="d-flex justify-content-around">
+              <button mat-icon-button (click)="openC(contentConfirm)">
+                <mat-icon class="text-danger">delete</mat-icon>
+              </button>
+              <button mat-icon-button>
+                <mat-icon class="text-info">update</mat-icon>
+              </button>
             </td>
-<!--        <td class=" d-flex justify-content-around">
+            <!--        <td class=" d-flex justify-content-around">
             <button class="btn btn-sm btn-warning">X</button>
             <button class="btn btn-sm btn-danger">Conf</button>
             </td> -->
@@ -30,42 +53,76 @@
       </table>
     </div>
   </div>
-  <div class="col-4 mx-auto separar">
-    <div class="col-12 contenedor-agenda">
-      <hr>
-      <h5 class="text-center text-black-50">{{titulo}}</h5>
-      <hr>
-      <form>
-        <div class="form-row">
-          <div class="form-group col-12">
-            <label for="nombre">Usuario:</label>
-            <input class="form-control" type="text" id="nombre"
-              placeholder="Usuario" required>
-          </div>
-          <div class="form-group col-12">
-            <label for="nameC">Contraseña:</label>
-            <input  id="nameC" type="password" class="form-control"
-              placeholder="Contraseña" required autocomplete="off">
-          </div>
-          <div class="form-group col-6">
-            <label>Rol:</label>
-            <select class="form-control" required>
-            <option disabled selected value="">Roles</option>
-            <option *ngFor="let item of roles" value="{{item.id_rol}}">{{item.nom_rol}}</option>
-          </select>
-          </div>
-          <div class="form-group col-6">
-            <label>Documento Empleado:</label>
-            <select class="form-control" required>
-              <option disabled selected value="">Documento empleado</option>
-              <option *ngFor="let empleado of empleados" value="{{empleado.documento}}">{{empleado.documento}}-{{empleado.nombres}}-{{empleado.apellidos}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-success">Agregar contacto</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Crear Usuario</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cerrar()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #formRegUsu="ngForm" (ngSubmit)="OnSubmit()">
+    <mat-form-field appearance="outline" class="inputfull form-group col-6 mt-3">
+      <mat-label>Usuario:</mat-label>
+      <input matInput #user="ngModel" name="user" [(ngModel)]="User.user" placeholder="Ingrese el usuario" autofocus
+        required>
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="inputfull form-group col-6 mt-3">
+      <mat-label>Contraseña:</mat-label>
+      <input matInput #pass="ngModel" name="pass" [(ngModel)]="User.pass" autocomplete="off" required placeholder="Enter your password"
+        [type]="hide ? 'text' : 'password'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="inputfull form-group col-6 mt-3">
+      <mat-label>Documento:</mat-label>
+      <mat-select #documento="ngModel" name="documento" [(ngModel)]="User.documento" placeholder="Selecione el Documento">
+        <mat-option *ngFor="let empleado of empleados" [value]="empleado.documento">{{empleado.documento}}
+          {{empleado.nombres}}-{{empleado.apellidos}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="inputfull form-group col-6 mt-3">
+      <mat-label>Rol:</mat-label>
+      <mat-select #rol="ngModel" name="rol" [(ngModel)]="User.rol" placeholder="Selecione el rol">
+        <mat-option *ngFor="let item of roles" [value]="item.id_rol">{{item.nom_rol}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="cerrar()">
+        <span class="fa fa-remove"></span>
+        <span class="hidden-xs" (click)="cerrar()"> Cerrar</span>
+      </button>
+      <button [disabled]="loading" type="submit" class="btn btn-primary">
+        <span class="fa fa-save"></span>
+        <span class="hidden-xs"> Guardar</span>
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+
+
+<ng-template #contentConfirm let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Borrar usuario</h5>
+    <button type="button" class="close" aria-label="Close" (click)="cerrar()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-footer d-flex justify-content-around">
+    <button type="button" class="btn btn-danger btn-sm d-flex justify-content-center" (click)="cerrar()">
+      <span class="hidden-xs" (click)="cerrar()">
+        <mat-icon> cancel </mat-icon>
+      </span>
+
+    </button>
+    <button [disabled]="loading" type="submit" class="btn btn-sm btn-warning d-flex justify-content-center">
+      <span class="hidden-xs">
+        <mat-icon class="text-danger"> check </mat-icon>
+      </span>
+
+    </button>
+  </div>
+</ng-template>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Entrada } from 'src/app/models/entrada';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntradaService } from 'src/app/services/entrada.service';
+import { EntradaPSede } from 'src/app/models/enporsede';
 
 @Component({
   selector: 'app-entrada',
@@ -16,6 +17,7 @@ export class EntradaComponent implements OnInit {
   Ent: Entrada;
   error: boolean;
   errorMessage: string;
+  userlog: EntradaPSede;
 
   constructor(
     private sEntrada: EntradaService,
@@ -23,6 +25,7 @@ export class EntradaComponent implements OnInit {
     private router: Router
   ) {
     this.Ent = new Entrada;
+    this.userlog = JSON.parse(localStorage.getItem('usuario'));
   }
 
   ngOnInit() {
@@ -34,6 +37,7 @@ export class EntradaComponent implements OnInit {
   }
 
   addEntradaUsu() {
+    this.Ent.id_sede = this.userlog.id_sede;
     this.sEntrada.addEntrada(this.Ent).subscribe(
       response => {
         if (response.code === 200) {

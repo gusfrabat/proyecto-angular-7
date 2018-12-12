@@ -9,6 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyNavComponent } from './my-nav/my-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MaterialModule } from './material.component';
 
 
 @NgModule({
@@ -16,6 +20,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     LoginComponent,
     NotfoundComponent,
+    MyNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,9 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MaterialModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

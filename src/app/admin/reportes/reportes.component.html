@@ -1,3 +1,51 @@
-<p>
-  reportes works!
-</p>
+<div class="container d-flex justify-content-start">
+  <input id="sede" type="checkbox" [(ngModel)]="checkS" data-md-icheck (change)="ShowSede($event)" />
+  <label for="sede">Sede</label>
+</div>
+
+<div class="container d-flex justify-content-start">
+  <input id="documento" type="checkbox" [(ngModel)]="checkD" data-md-icheck (change)="ShowDocumento($event)" />
+  <label for="documento">Documento</label>
+</div>
+
+<div class="container d-flex justify-content-start">
+  <input id="docufech" type="checkbox" [(ngModel)]="checkDF" data-md-icheck (change)="ShowDocuFech($event)" />
+  <label for="docufech">Documento y fecha</label>
+</div>
+
+
+<div *ngIf="SedeShow">
+  <div>
+    <form>
+      <mat-form-field class="form-group col-6">
+        <mat-label>Sede:</mat-label>
+        <mat-select #sede="ngModel" name="sede" [(ngModel)]="Sed.sede" placeholder="Selecione la sede">
+          <mat-option *ngFor="let item of sedes" [value]="item.id_sede">{{item.nom_sede}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="DocuShow">
+  <form>
+    <mat-form-field class="form-group col-6">
+      <mat-label>Documento</mat-label>
+      <input matInput id="docu" type="number" placeholder="Digite el documento">
+    </mat-form-field>
+  </form>
+</div>
+
+<div *ngIf="DocuFechShow">
+  <form>
+    <mat-form-field class="form-group col-6">
+      <mat-label>Documento:</mat-label>
+      <input matInput placeholder="Digite el documento">
+    </mat-form-field>
+    <mat-form-field class="form-group col-6">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  </form>
+</div>

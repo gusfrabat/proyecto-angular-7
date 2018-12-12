@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 m-auto mt-5">
+ <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 m-auto mt-5">
   <div class="card">
     <div class="card-body">
       <div class="card-title">
@@ -13,6 +13,7 @@
         <table class="table table-hover table-condensed table-striped table-bordered">
           <thead>
             <tr class="text-center">
+              <th># </th>
               <th>sede</th>
               <th>Nombres</th>
               <th>Apellidos</th>
@@ -23,7 +24,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="text-center" *ngFor="let usuario of entradas">
+            <tr class="text-center" *ngFor="let usuario of entradas; let i=index">
+              <td>{{i + 1}}</td>
               <td>{{usuario.nom_sede}}</td>
               <td>{{usuario.nombres}}</td>
               <td>{{usuario.apellidos}}</td>

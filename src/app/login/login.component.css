@@ -4,16 +4,15 @@
   box-shadow: 1px 2px #cccc;
   border-radius: 15px;
   margin-top: 20vh;
-  width: 400px;
-  height: 400px;
+  width: 390px;
+  height: 500px;
 }
 
-.login-container div label{
-  font-size: 20px;
-  margin-top: 3vh;
+.inputfull {
+  width: 100%;
+  margin-top: 4.2vh;
 }
 
-.login-container h2 {
-  font-size: 30px;
-  margin-top: 2vh;
+.sizes {
+  font-size: 10px;
 }

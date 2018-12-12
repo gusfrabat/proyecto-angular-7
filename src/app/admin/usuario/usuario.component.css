@@ -4,5 +4,20 @@
   padding: 5px;
 }
 
+.inputffll {
+  padding: 5px;
+}
 
+.custom-select-lg {
+  height: calc(3.545rem + 2px);
+  font-size: 100%;
+}
+
+.table-bordered thead th, .table-bordered thead td {
+width: 1%;
+}
+
+.table th, .table td {
+  vertical-align: 0px;
+}
 

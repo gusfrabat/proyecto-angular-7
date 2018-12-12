@@ -1,3 +1,11 @@
 export class Entrada {
-  entrada: number;
+  sede: string;
+  Nombres: string;
+  id_sede: number;
+  Apellidos: string;
+  Documento: number;
+  entrada: Date;
+  salida: Date;
+  dif: Date;
 }
+

@@ -11,7 +11,7 @@ export class EmpleadoService {
   ) {
     this.url = GLOBAL.url;
   }
-  getEmpleados(): Observable<any> {
+  getEmpledo(): Observable<any> {
     return this.Http.get(this.url + 'empleados');
   }
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EntradaService } from 'src/app/services/entrada.service';
 import { GLOBAL } from 'src/app/services/global';
 import { Entrada } from 'src/app/models/entrada';
+import { EntradaPSede } from 'src/app/models/enporsede';
+import { EntradaS } from 'src/app/models/entradaS';
+
 
 @Component({
   selector: 'app-lista-entrada',
@@ -10,30 +13,35 @@ import { Entrada } from 'src/app/models/entrada';
   providers: [EntradaService]
 })
 export class ListaEntradaComponent implements OnInit {
-
   url: string;
   entradas: Entrada;
+  putamalparida: EntradaPSede;
+  userlog: EntradaPSede;
+  EntU: EntradaS;
 
   constructor(
     private entradaService: EntradaService
   ) {
     this.url = GLOBAL.url;
+    this.EntU = new EntradaS;
+    this.userlog = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.userlog.id_sede);
+
    }
 
-   ngOnInit() {
+  ngOnInit() {
     this.getEntrada();
   }
 
+
   getEntrada() {
-    this.entradaService.getEntrada().subscribe(result => {
-      if (result.code === 200) {
-        this.entradas = result.data;
-      } else {
-        console.log(result);
+    this.EntU.id_sede = this.userlog.id_sede;
+    this.entradaService.GetEntrada(this.EntU).subscribe(Response => {
+      if (Response.code === 200) {
+        this.entradas = Response.data;
       }
-    },
-    error => {
-      console.log(error);
     });
   }
+
 }
+

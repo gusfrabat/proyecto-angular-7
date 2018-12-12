@@ -9,10 +9,13 @@ export class AuthGuard implements CanActivate {
         private router: Router) { }
 
     canActivate() {
-        // If the user is not logged in we'll send them back to the home page
-        if (!localStorage.getItem('usuario')) {
-            console.log('No estás logueado');
-        }
-        return true;
-    }
+          // If the user is not logged in we'll send them back to the home page
+          if (!localStorage.getItem('usuario')) {
+              console.log('No estás logueado');
+              this.router.navigate(['/not-found']);
+              return false;
+          }
+
+          return true;
+      }
 }
