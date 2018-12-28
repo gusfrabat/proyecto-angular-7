@@ -1,20 +1,31 @@
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-  <a class="navbar-brand text-white-50">Usuario</a>
-  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-      aria-expanded="false" aria-label="Toggle navigation"></button>
-  <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-              <a class="nav-link" [routerLink]="[ './vista' ]" [routerLinkActive]="['activado']">vista</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" [routerLink]="[ '/' ]" >#</a>
-          </li>
-      </ul>
-      <div class="form-inline my-2 my-lg-0">
-          <button class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="['/']">log out</button>
-      </div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand">Admin</a>
+  <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+    data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="!isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[ './vista' ]" [routerLinkActive]="['activado']">Vista</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[ './permiso' ]" [routerLinkActive]="['activado']">Permiso</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <button [matMenuTriggerFor]="appMenu" class="btn btn-outline-info btn-person d-flex justify-content-between">
+        <mat-icon> person </mat-icon>
+        <mat-icon> more_vert </mat-icon>
+      </button>
+      <!--   <button class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="['/']">log out</button> -->
+    </div>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
+
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item>Usuario: {{userlog.usuario}}</button>
+  <button mat-menu-item (click)="logOut()">Cerrar sesión <mat-icon class="text-danger"> input </mat-icon></button>
+</mat-menu>

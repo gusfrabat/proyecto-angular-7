@@ -25,9 +25,8 @@ export class AuthService {
   LogIn(Log: Login): Observable<any> {
     const json = JSON.stringify(Log);
     const params = 'json=' + json;
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-    return this.Http.post(this.url + 'login', params, { headers: headers });
+    return this.Http.post(this.url + 'login', params);
 }
 
 }

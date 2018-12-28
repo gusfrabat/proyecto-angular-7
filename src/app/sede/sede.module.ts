@@ -8,6 +8,7 @@ import { ListaEntradaComponent } from './lista-entrada/lista-entrada.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SecurityS } from './guards/security.guard';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     MaterialModule,
     NgbModule.forRoot(),
-  ]
+  ],
+  providers: [SecurityS],
+  bootstrap: [SedeComponent]
 })
 export class SedeModule { }

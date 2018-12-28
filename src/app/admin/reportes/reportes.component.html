@@ -1,51 +1,102 @@
-<div class="container d-flex justify-content-start">
-  <input id="sede" type="checkbox" [(ngModel)]="checkS" data-md-icheck (change)="ShowSede($event)" />
-  <label for="sede">Sede</label>
-</div>
-
-<div class="container d-flex justify-content-start">
-  <input id="documento" type="checkbox" [(ngModel)]="checkD" data-md-icheck (change)="ShowDocumento($event)" />
-  <label for="documento">Documento</label>
-</div>
-
-<div class="container d-flex justify-content-start">
-  <input id="docufech" type="checkbox" [(ngModel)]="checkDF" data-md-icheck (change)="ShowDocuFech($event)" />
-  <label for="docufech">Documento y fecha</label>
-</div>
-
-
-<div *ngIf="SedeShow">
+<div class="col-12">
   <div>
-    <form>
-      <mat-form-field class="form-group col-6">
+    <h6 class="text-black-50">Filtrar por:</h6>
+    <div class="form-row text-center d-flex justify-content-center">
+
+      <div class="container col-sm-5 col-md-4 col-lg-4 col-xl-2">
+        <input class="pointerD mt-1" id="sede" type="checkbox" [(ngModel)]="checkS" data-md-icheck (change)="ShowSede($event)" />
+        <label class="pointerD" for="sede" ngbTooltip="Flitro sede Entrada">Sede</label>
+      </div>
+
+      <div class="container col-sm-5 col-md-4 col-lg-4 col-xl-2">
+        <input class="pointerD mt-1" id="documento" type="checkbox" [(ngModel)]="checkD" data-md-icheck (change)="ShowDocumento($event)" />
+        <label class="pointerD" for="documento" ngbTooltip="Filtro por documento empleado">Documento</label>
+      </div>
+
+      <div class="container col-sm-5 col-md-4 col-lg-4 col-xl-2">
+        <input class="pointerD mt-1" id="docufech" type="checkbox" [(ngModel)]="checkDF" data-md-icheck (change)="ShowDocuFech($event)" />
+        <label class="pointerD" for="docufech" ngbTooltip="Filtro por una fecha especifica">Fecha1</label>
+      </div>
+
+      <div class="container col-sm-5 col-md-4 col-lg-4 col-xl-2">
+        <input class="pointerD mt-1" id="docufechF" type="checkbox" [(ngModel)]="checkDFF" data-md-icheck
+          (change)="ShowDocuFechF($event)" />
+        <label class="pointerD" for="docufechF" ngbTooltip="filta entre fecha1 y fecha2">Fecha2</label>
+      </div>
+
+      <div class="container col-sm-5 col-md-4 col-lg-4 col-xl-2">
+        <input class="pointerD mt-1" id="docufechT" type="checkbox" [(ngModel)]="checkT" data-md-icheck (change)="ShowT($event)" />
+        <label class="pointerD" for="docufechT" ngbTooltip="selecciona todos los filtros">Todos</label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="text-center col-12">
+    <form #formFiltroR="ngForm" (ngSubmit)="OnSubmit()" class="form-row">
+      <mat-form-field *ngIf="SedeShow" class="col-sm-4 col-md-5 col-lg-3 col-xl-2">
         <mat-label>Sede:</mat-label>
-        <mat-select #sede="ngModel" name="sede" [(ngModel)]="Sed.sede" placeholder="Selecione la sede">
+        <mat-select #sede="ngModel" name="sede" [(ngModel)]="FilR.sede" placeholder="Selecione la sede" required>
           <mat-option *ngFor="let item of sedes" [value]="item.id_sede">{{item.nom_sede}}</mat-option>
         </mat-select>
       </mat-form-field>
-    </form>
-  </div>
-</div>
-
-<div *ngIf="DocuShow">
-  <form>
-    <mat-form-field class="form-group col-6">
-      <mat-label>Documento</mat-label>
-      <input matInput id="docu" type="number" placeholder="Digite el documento">
-    </mat-form-field>
-  </form>
-</div>
-
-<div *ngIf="DocuFechShow">
-  <form>
-    <mat-form-field class="form-group col-6">
-      <mat-label>Documento:</mat-label>
-      <input matInput placeholder="Digite el documento">
-    </mat-form-field>
-    <mat-form-field class="form-group col-6">
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-form-field *ngIf="DocuShow" class="col-sm-4 col-md-4 col-lg-3 col-xl-2">
+        <mat-label>Documento</mat-label>
+        <input matInput #documento="ngModel" name="documento"  [(ngModel)]="FilR.documento" id="docu" type="number" placeholder="Digite el documento" required>
+      </mat-form-field>
+      <mat-form-field *ngIf="DocuFechShow" class="col-sm-3 col-md-4 col-lg-3 col-xl-2">
+        <input matInput #DateOne="ngModel" name="DateOne" [(ngModel)]="FilR.DateOne" [matDatepicker]="picker" placeholder="Seleccione la fecha" required>
+        <mat-label>Fecha</mat-label>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-  </form>
+      <mat-form-field *ngIf="DocuFechShowF" class="col-sm-3 col-md-4 col-lg-3 col-xl-2">
+        <input matInput #DateTwo="ngModel" name="DateTwo" [(ngModel)]="FilR.DateTwo" [matDatepicker]="picker" placeholder="Seleccione la fecha" required>
+        <mat-label>Fecha 2</mat-label>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1">
+      <button *ngIf="showBut" [hidden]="formFiltroR.valid"  type="submit" class="btn btn-sm btn-outline-success d-flex justify-content-center">
+        <mat-icon>search</mat-icon></button>
+      </div>
+      </form>
+  </div>
+
+
+
+  <div class="col-12">
+    <div class="col-12">
+      <hr>
+      <h5 class="text-center text-black-50">{{empleado}}</h5>
+      <hr>
+      <div class="table-responsive">
+        <table *ngIf="empleadosR" class="table table-a table-hover">
+          <thead>
+            <tr class="text-center">
+              <th>Documento</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Sede entrada</th>
+              <th>Entrada</th>
+              <th>Salida</th>
+              <th>Horas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center" *ngFor="let ent of empleadosR; let i=index">
+              <td>{{ent.documento}}</td>
+              <td>{{ent.nombres}}</td>
+              <td>{{ent.apellidos}}</td>
+              <td>{{ent.nom_sede}}</td>
+              <td>{{ent.entrada | date:'medium'}}</td>
+              <td>{{ent.salida | date:'medium'}}</td>
+              <td>{{ent.dif}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 </div>

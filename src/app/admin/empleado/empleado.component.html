@@ -1,0 +1,110 @@
+<div class="col-12">
+  <div class="col-12">
+    <hr>
+    <h5 class="text-center text-black-50">{{usuarios}}</h5>
+    <hr>
+    <div class="col-12 d-flex justify-content-around form-group">
+      <div>
+        <button class="btn btn-outline-info d-flex justify-content-end" (click)="openC(contentConfirm)">Nuevo empleado
+          <mat-icon class="ml-2">person_add</mat-icon></button>
+      </div>
+      <form #formFlitroUS="ngForm">
+        <div class="d-flex justify-content-between">
+          <input type="number" placeholder="filtro por documento" class="form-control">
+          <button class="btn btn-sm btn-outline-success d-flex justify-content-center">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-a table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>Documento</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Sede</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let emp of empleados; let i=index">
+            <td>{{emp.documento}}</td>
+            <td>{{emp.nombres}}</td>
+            <td>{{emp.apellidos}}</td>
+            <td>{{emp.telefono}}</td>
+            <td>{{emp.correo}}</td>
+            <td>{{emp.nom_sede}}</td>
+            <td class="d-flex justify-content-around">
+              <button mat-icon-button (click)="openC(contentConfirm)">
+                <mat-icon class="text-danger">delete</mat-icon>
+              </button>
+              <button mat-icon-button>
+                <mat-icon class="text-info">update</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #contentConfirm let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Crear empleados</h5>
+    <button type="button" class="close" aria-label="Close" (click)="cerrar()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #FromAddEmpleado="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="form-group col-6">
+      <mat-label>Nombres:</mat-label>
+      <input matInput [(ngModel)]="Empl.nombres" name="nombres" #nombres="ngModel" placeholder="Nombre completo" type="text"
+        required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-group col-6">
+      <mat-label>Apellidos:</mat-label>
+      <input matInput [(ngModel)]="Empl.apellidos" name="apellidos" #apellidos="ngModel" placeholder="Apellidos" type="text"
+        required required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-group col-6">
+      <mat-label>Documento:</mat-label>
+      <input matInput [(ngModel)]="Empl.documento" name="documento" #documento="ngModel" placeholder="Digite el documento"
+        type="number" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-group col-6">
+      <mat-label>Telefono:</mat-label>
+      <input matInput [(ngModel)]="Empl.telefono" name="telefono" #telefono="ngModel" placeholder="digite el telefono"
+        type="number">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-group col-6">
+      <mat-label>Correo:</mat-label>
+      <input matInput [(ngModel)]="Empl.correo" name="correo" #correo="ngModel" placeholder="Digite e correo" type="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="orm-group col-6">
+      <mat-label>Sede:</mat-label>
+      <mat-select [(ngModel)]="Empl.sede" name="sede" #sede="ngModel">
+        <mat-option *ngFor="let item of sedes" [value]="item.id_sede">{{item.nom_sede}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="modal-footer d-flex justify-content-around">
+      <button type="button" class="btn btn-outline-danger btn-sm d-flex justify-content-center" (click)="cerrar()">
+        <span class="hidden-xs" (click)="cerrar()">
+          Cancelar
+        </span>
+      </button>
+      <button [disabled]="loading" type="submit" class="btn btn-sm btn-outline-success d-flex justify-content-center">
+        <span class="hidden-xs">
+          Guardar
+        </span>
+      </button>
+    </div>
+  </form>
+</ng-template>
+<!-- #rol="ngModel" name="rol" [(ngModel)]="User.rol" -->

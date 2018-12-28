@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../models/login';
-import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +10,9 @@ import { FormControl, Validators } from '@angular/forms';
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  show: boolean;
   titulo: string;
-  error: boolean;
-  errorMessage: string;
   Log: Login;
   loading: boolean;
-  contrasena = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(
     private AutService: AuthService,
@@ -28,38 +23,32 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.show = true;
   }
 
   onSubmit() {
     this.LogIn();
   }
 
-  getErrorMessage() {
-    return this.contrasena.hasError('required') ? 'digite la contraseña' :
-            '';
-  }
-
   LogIn() {
     this.AutService.LogIn(this.Log).subscribe(
       response => {
-        this.loading = true;
-        const delay = 1300;
         if (response.code === 200) {
+          this.loading = true;
+          sessionStorage.setItem('usuario', JSON.stringify(response.data));
+          setTimeout(() => {
+            if (response.data.id_rol === '2217') {
+              this.router.navigate(['/admin/empleado']);
+            } else if (response.data.id_rol === '3724') {
+              this.router.navigate(['/usuario/vista']);
+            } else if (response.data.id_rol === '3317') {
+              this.router.navigate(['/sede/entrada']);
+            }
+          }, 1000);
+          setTimeout(() => {
           this.Log = new Login;
-          this.error = false;
-          localStorage.setItem('usuario', JSON.stringify(response.data));
-          if (response.data.id_rol === '3') {
-            this.router.navigate(['/admin/usuario']);
-          } else if (response.data.id_rol === '1') {
-            this.router.navigate(['/usuario/vista']);
-          } else if (response.data.id_rol === '2') {
-            this.router.navigate(['/sede/entrada']);
-          }
+          }, 3000);
         } else {
           this.Log = new Login;
-          this.error = true;
-          this.errorMessage = 'usuario o contraseña incorrectos';
           this.loading = false;
         }
       });

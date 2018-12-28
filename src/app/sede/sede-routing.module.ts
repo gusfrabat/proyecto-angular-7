@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { SedeComponent } from './sede.component';
 import { ListaEntradaComponent } from './lista-entrada/lista-entrada.component';
 import { EntradaComponent } from './entrada/entrada.component';
+import { SecurityS } from './guards/security.guard';
 
 const routes: Routes = [
   { path: '', component: SedeComponent,
     children: [
-      { path: 'entrada', component: EntradaComponent },
-      { path: 'lista-entrada', component: ListaEntradaComponent },
-  ]},
+      { path: 'entrada', component: EntradaComponent, canActivate: [SecurityS] },
+      { path: 'lista-entrada', component: ListaEntradaComponent, canActivate: [SecurityS] },
+  ], canActivate: [SecurityS]},
   { path: '**', redirectTo: 'not-found'},
 ];
 

@@ -14,12 +14,11 @@ export class SedeComponent {
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    this.userlog = JSON.parse(localStorage.getItem('usuario'));
+    this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
   }
 
   logOut() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
-
 }

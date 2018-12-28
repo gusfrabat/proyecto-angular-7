@@ -9,8 +9,6 @@ import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { RegUsu } from 'src/app/models/reguser';
 import { FlitroUsu } from 'src/app/models/filtro';
-
-
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -31,7 +29,6 @@ export class UsuarioComponent implements OnInit {
   usuarios: Usuarios;
   User: RegUsu;
   Filtro: FlitroUsu;
-
   constructor(
     private empleadoService: EmpleadoService,
     private rolService: RolService,
@@ -39,7 +36,6 @@ export class UsuarioComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private usuarioService: UsuarioService,
-
   ) {
     this.titulo = 'Agregar Usuarios';
     this.usuario = 'Lista Usuarios';
@@ -52,26 +48,21 @@ export class UsuarioComponent implements OnInit {
   openC(contentConfirm) {
     this.modal = this.modalService.open(contentConfirm, { size: 'sm', backdropClass: 'light-blue-backdrop' });
   }
-
   cerrar() {
     this.modal.close();
   }
-
   ngOnInit() {
     this.getRol();
     this.getEmpleado();
     this.getUsuarios();
   }
-
   OnSubmit() {
     this.addUsuarios();
   }
-
   filtro() {
     this.getUsuarios();
     this.Filtro = new FlitroUsu;
   }
-
   addUsuarios() {
     this.usuarioService.addUsuarios(this.User).subscribe(
       response => {
@@ -85,8 +76,6 @@ export class UsuarioComponent implements OnInit {
         }
       });
   }
-
-
   getRol() {
     this.rolService.getRole().subscribe(result => {
       if (result.code === 200) {
@@ -94,7 +83,6 @@ export class UsuarioComponent implements OnInit {
       }
     });
   }
-
   getUsuarios() {
     this.usuarioService.getUsuarios(this.Filtro).subscribe(Response => {
       if (Response.code === 200) {
@@ -102,9 +90,6 @@ export class UsuarioComponent implements OnInit {
       }
     });
   }
-
-
-
   getEmpleado() {
     this.empleadoService.getEmpledo().subscribe(result => {
       if (result.code === 200) {
@@ -113,5 +98,3 @@ export class UsuarioComponent implements OnInit {
     });
   }
 }
-
-

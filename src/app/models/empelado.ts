@@ -3,3 +3,4 @@ export class Empleados {
   nombres: string;
   apellidos: string;
 }
+

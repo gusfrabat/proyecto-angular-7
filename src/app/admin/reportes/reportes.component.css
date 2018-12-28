@@ -1,11 +1,12 @@
 /* Hide the browser's default checkbox */
 .container input {
-    width: 15px;
-    height: 15px;
-    margin: 5px;
+    width: 18px;
+    height: 18px;
 }
 
-.container {
-  margin: 5px;
+
+.pointerD {
   cursor: pointer;
 }
+
+

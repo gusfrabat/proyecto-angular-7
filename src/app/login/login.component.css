@@ -1,18 +1,28 @@
 .login-container{
   border: 1px solid #cccc;
   background: rgba(245, 245, 245, 0.1);
-  box-shadow: 1px 2px #cccc;
+  box-shadow: 1px 4px #cccc;
   border-radius: 15px;
   margin-top: 20vh;
   width: 390px;
-  height: 500px;
+  height: 400px;
 }
 
 .inputfull {
   width: 100%;
-  margin-top: 4.2vh;
+  margin-top: 2vh;
 }
 
 .sizes {
   font-size: 10px;
+}
+
+svg path,
+svg rect{
+  fill: blue;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
 }

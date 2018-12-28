@@ -9,6 +9,7 @@ import { EmpleadoComponent } from './empleado/empleado.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../material.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SecurityA } from './guard/security.guard';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
+  providers: [SecurityA],
   bootstrap: [AdminComponent]
 })
 export class AdminModule { }

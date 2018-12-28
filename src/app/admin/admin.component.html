@@ -17,12 +17,10 @@
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
-
       <button [matMenuTriggerFor]="appMenu" class="btn btn-outline-info btn-person d-flex justify-content-between">
         <mat-icon> person </mat-icon>
-        <mat-icon>more_vert</mat-icon>
+        <mat-icon> more_vert </mat-icon>
       </button>
-
       <!--   <button class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="['/']">log out</button> -->
     </div>
   </div>
@@ -32,5 +30,5 @@
 
 <mat-menu #appMenu="matMenu">
   <button mat-menu-item>Usuario: {{userlog.usuario}}</button>
-  <button mat-menu-item (click)="logOut()"  >Cerrar sesión <mat-icon class="text-danger"> input </mat-icon></button>
+  <button mat-menu-item (click)="logOut()">Cerrar sesión <mat-icon class="text-danger"> input </mat-icon></button>
 </mat-menu>

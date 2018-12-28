@@ -25,7 +25,7 @@ export class EntradaComponent implements OnInit {
     private router: Router
   ) {
     this.Ent = new Entrada;
-    this.userlog = JSON.parse(localStorage.getItem('usuario'));
+    this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
   }
 
   ngOnInit() {

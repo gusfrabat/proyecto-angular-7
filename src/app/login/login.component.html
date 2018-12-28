@@ -1,5 +1,5 @@
 <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 login-container mx-auto">
-  <h2 class="text-center mt-5 text-black-50">Inicio de sesión</h2>
+  <h4 class="text-center mt-5 text-black-50">Inicio de sesión</h4>
   <form #formLogin="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline" class="inputfull">
       <mat-label>Usuario:</mat-label>
@@ -11,10 +11,12 @@
       <input matInput #pass="ngModel" name="pass" [(ngModel)]="Log.pass" required autocomplete="off" placeholder="Enter your password"
         [type]="hide ? 'text' : 'password'">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      <mat-error *ngIf="contrasena.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
-    <div class="d-flex justify-content-center mt-5 ">
+    <div class="d-flex justify-content-center mt-3 ">
       <button class="btn btn-info d-flex justify-content-end">Inicio sesión <mat-icon class="ml-2">input</mat-icon></button>
+      <div *ngIf="loading" class="spinner">
+          <img class="spinner"  src="https://www.visitlisboa.com/themes/lisbon/images/demo/plan/timer.gif" alt="">
+      </div>
     </div>
   </form>
 </div>

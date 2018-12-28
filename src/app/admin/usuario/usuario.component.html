@@ -112,17 +112,10 @@
     </button>
   </div>
   <div class="modal-footer d-flex justify-content-around">
-    <button type="button" class="btn btn-danger btn-sm d-flex justify-content-center" (click)="cerrar()">
-      <span class="hidden-xs" (click)="cerrar()">
-        <mat-icon> cancel </mat-icon>
-      </span>
-
-    </button>
     <button [disabled]="loading" type="submit" class="btn btn-sm btn-warning d-flex justify-content-center">
       <span class="hidden-xs">
         <mat-icon class="text-danger"> check </mat-icon>
       </span>
-
     </button>
   </div>
 </ng-template>

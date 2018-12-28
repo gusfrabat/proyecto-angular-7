@@ -11,16 +11,13 @@ export class AdminComponent {
   userlog: string;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
   ) {
-    this.userlog = JSON.parse(localStorage.getItem('usuario'));
-   }
-
-  logOut() {
-    localStorage.clear();
-    this.router.navigate(['/']);
+    this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
   }
 
-
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  }
 }

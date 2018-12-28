@@ -18,22 +18,17 @@ export class ListaEntradaComponent implements OnInit {
   putamalparida: EntradaPSede;
   userlog: EntradaPSede;
   EntU: EntradaS;
-
   constructor(
     private entradaService: EntradaService
   ) {
     this.url = GLOBAL.url;
     this.EntU = new EntradaS;
-    this.userlog = JSON.parse(localStorage.getItem('usuario'));
+    this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
     console.log(this.userlog.id_sede);
-
    }
-
   ngOnInit() {
     this.getEntrada();
   }
-
-
   getEntrada() {
     this.EntU.id_sede = this.userlog.id_sede;
     this.entradaService.GetEntrada(this.EntU).subscribe(Response => {
