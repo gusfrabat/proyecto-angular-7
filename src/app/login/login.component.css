@@ -1,11 +1,30 @@
 .login-container{
-  border: 1px solid #cccc;
-  background: rgba(245, 245, 245, 0.1);
-  box-shadow: 1px 4px #cccc;
-  border-radius: 15px;
-  margin-top: 20vh;
+  box-shadow: 2px 4px #cccc;
+  border-radius: 25px;
   width: 390px;
   height: 400px;
+  /* background-color: rgba(236, 236, 236, 0.226); */
+  background-image: linear-gradient(to right, rgba(22, 22, 22, 0.048), rgba(226, 226, 226, 0.103));
+}
+
+.alertCont {
+  margin-top: 18vh;
+  width: 390px;
+  height: 400px;
+}
+
+.mtmenos{
+  margin-top: -6.5vh;
+}
+
+.cardLog {
+  border-radius: 25px;
+  width: 390px;
+  height: 400px;
+}
+
+.mat-progress-spinner{
+  stroke: #17a2b8;
 }
 
 .inputfull {
@@ -26,3 +45,4 @@ svg rect{
   width: 40px;
   height: 40px;
 }
+

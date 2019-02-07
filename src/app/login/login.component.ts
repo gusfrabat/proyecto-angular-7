@@ -9,10 +9,14 @@ import { Login } from '../models/login';
   styleUrls: ['./login.component.css'],
   providers: [AuthService]
 })
+
 export class LoginComponent implements OnInit {
   titulo: string;
   Log: Login;
   loading: boolean;
+  hide: any;
+  message: string;
+  alert: boolean;
 
   constructor(
     private AutService: AuthService,
@@ -43,16 +47,21 @@ export class LoginComponent implements OnInit {
             } else if (response.data.id_rol === '3317') {
               this.router.navigate(['/sede/entrada']);
             }
-          }, 1000);
+          }, 3000);
           setTimeout(() => {
           this.Log = new Login;
-          }, 3000);
+          }, 4000);
         } else {
-          this.Log = new Login;
-          this.loading = false;
+          this.alert = true;
+          this.message = response.message;
+          setTimeout(() => {
+            this.Log = new Login;
+          }, 2000);
+
+          setTimeout(() => {
+            this.alert = false;
+          }, 4000);
         }
       });
   }
 }
-
-

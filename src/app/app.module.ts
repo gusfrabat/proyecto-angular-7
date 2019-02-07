@@ -14,6 +14,7 @@ import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material.component';
 import { HttpInterceptorApi } from './helpers/http.interceptor';
+import { PruebaComponent } from './prueba/prueba.component';
 
 
 @NgModule({
@@ -22,11 +23,12 @@ import { HttpInterceptorApi } from './helpers/http.interceptor';
     LoginComponent,
     NotfoundComponent,
     MyNavComponent,
+    PruebaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
+    NgbModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,

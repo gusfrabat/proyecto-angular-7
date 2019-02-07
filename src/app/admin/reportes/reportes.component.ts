@@ -25,6 +25,7 @@ export class ReportesComponent implements OnInit {
   checkD = false;
   checkS = false;
   checkDFF = false;
+  checkT: boolean;
   empleado: string;
   sedes: Sede;
   FilR: ReportFilt;

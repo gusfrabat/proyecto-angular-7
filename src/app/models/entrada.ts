@@ -3,7 +3,7 @@ export class Entrada {
   Nombres: string;
   id_sede: number;
   Apellidos: string;
-  Documento: number;
+  documento: number;
   entrada: Date;
   salida: Date;
   dif: Date;

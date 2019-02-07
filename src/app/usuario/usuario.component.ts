@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioG } from '../models/usuario-g';
 
 @Component({
   selector: 'app-usuario',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class UsuarioComponent implements OnInit {
 
-  userlog: string;
+  userlog: UsuarioG;
+  isNavbarCollapsed: any;
 
   constructor(
     private router: Router,

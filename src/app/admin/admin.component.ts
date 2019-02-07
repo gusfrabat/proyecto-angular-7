@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioG } from '../models/usuario-g';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminComponent {
 
-  userlog: string;
+  userlog: UsuarioG;
+  isNavbarCollapsed: any;
 
   constructor(
     private router: Router,

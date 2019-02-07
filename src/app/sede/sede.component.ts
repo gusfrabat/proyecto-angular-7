@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsuarioG } from '../models/usuario-g';
 
 @Component({
   selector: 'app-sede',
@@ -8,7 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SedeComponent {
 
-  userlog: string;
+  userlog: UsuarioG;
+  isNavbarCollapsed: any;
 
   constructor(
     private route: ActivatedRoute,
