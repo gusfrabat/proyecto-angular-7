@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $Angular003-primary: mat-palette($mat-indigo);
-$Angular003-accent: mat-palette($mat-amber, A200, A100, A400);
+$Angular003-accent: mat-palette($mat-amber, A400, A200, A400);
 
 // The warn palette is optional (defaults to red).
 $Angular003-warn: mat-palette($mat-red);

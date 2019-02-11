@@ -4,7 +4,7 @@ import { GLOBAL } from 'src/app/services/global';
 import { Entrada } from 'src/app/models/entrada';
 import { EntradaPSede } from 'src/app/models/enporsede';
 import { EntradaS } from 'src/app/models/entradaS';
-
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-lista-entrada',
@@ -12,12 +12,17 @@ import { EntradaS } from 'src/app/models/entradaS';
   styleUrls: ['./lista-entrada.component.css'],
   providers: [EntradaService]
 })
+
 export class ListaEntradaComponent implements OnInit {
   url: string;
-  entradas: Entrada;
   putamalparida: EntradaPSede;
   userlog: EntradaPSede;
   EntU: EntradaS;
+  displayedColumns: string[] = ['sede', 'nombres', 'apellidos', 'documento', 'entrada', 'salida', 'dif'];
+  dataSource = new MatTableDataSource<Entrada>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(
     private entradaService: EntradaService
   ) {
@@ -25,18 +30,23 @@ export class ListaEntradaComponent implements OnInit {
     this.EntU = new EntradaS;
     this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
     console.log(this.userlog.id_sede);
-   }
+  }
+
   ngOnInit() {
     this.getEntrada();
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   getEntrada() {
     this.EntU.id_sede = this.userlog.id_sede;
     this.entradaService.GetEntrada(this.EntU).subscribe(Response => {
       if (Response.code === 200) {
-        this.entradas = Response.data;
+        this.dataSource = new MatTableDataSource<Entrada>(Response.data);
+        this.dataSource.paginator = this.paginator;
       }
     });
   }
-
 }
-

@@ -1,34 +1,36 @@
-<div class="mx-auto alertCont">
+<div class="contimg">
 
-  <div *ngIf="alert" class="alert alert-danger mtmenos" role="alert">
-    <p>{{message}}</p>
-  </div>
-
-  <div class="login-container mx-auto card">
-    <div class="card cardLog">
-      <h4 class="text-center mt-3 text-black-50">Inicio de sesión</h4>
-    </div>
-    <div class="card-body">
-      <form #formLogin="ngForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" class="inputfull">
-          <mat-label>Usuario:</mat-label>
-          <input matInput name="user" [(ngModel)]="Log.user" required placeholder="Ingrese el usuario">
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="inputfull">
-          <mat-label>Contraseña:</mat-label>
-          <input matInput #pass="ngModel" name="pass" [(ngModel)]="Log.pass" required autocomplete="off" placeholder="Ingrese su contraseña"
-            [type]="hide ? 'text' : 'password'">
-          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-        </mat-form-field>
-        <div class="d-flex justify-content-center mt-3 ">
-          <button class="btn btn-info d-flex justify-content-end">Inicio sesión <mat-icon class="ml-2">input</mat-icon></button>
-          <div *ngIf="loading" class="spinner">
-            <mat-spinner class="colorSpinner" diameter="25" strokeWidth="5">
-            </mat-spinner>
+  <div class="mx-auto alertCont">
+    <div class="login-container mx-auto card">
+      <div class="card cardLog mx-auto">
+        <h5 class="text-center mt-3 text-black-50">Inicio de sesión</h5>
+      </div>
+      <div class="card-body carBodyLog">
+        <form #formLogin="ngForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="inputfull">
+            <mat-label>Usuario:</mat-label>
+            <input matInput name="user" [(ngModel)]="Log.user" required placeholder="Ingrese el usuario">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="inputfull">
+            <mat-label>Contraseña:</mat-label>
+            <input matInput name="pass" [(ngModel)]="Log.pass" required autocomplete="off" placeholder="Ingrese su contraseña"
+              [type]="hide ? 'text' : 'password'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+          <div class="d-flex justify-content-center mt-3 ">
+            <button *ngIf="!loading" class="btn btn-info d-flex justify-content-end mt-2">Inicio sesión <mat-icon class="ml-2">input</mat-icon></button>
+            <div *ngIf="loading" class="spinner mb-2">
+              <mat-spinner class="colorSpinner" diameter="25" strokeWidth="2">
+              </mat-spinner>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
+    </div>
+    <div *ngIf="alert" class="alert alert-danger mtmenos mx-auto" role="alert">
+      <p>{{message}}</p>
     </div>
   </div>
+
 </div>

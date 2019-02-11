@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { PruebaComponent } from './prueba/prueba.component';
 
+
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full'},
   { path: 'not-found', component: NotfoundComponent },

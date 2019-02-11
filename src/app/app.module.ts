@@ -10,7 +10,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material.component';
 import { HttpInterceptorApi } from './helpers/http.interceptor';
@@ -22,7 +21,6 @@ import { PruebaComponent } from './prueba/prueba.component';
     AppComponent,
     LoginComponent,
     NotfoundComponent,
-    MyNavComponent,
     PruebaComponent,
   ],
   imports: [

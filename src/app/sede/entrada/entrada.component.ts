@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EntradaService } from 'src/app/services/entrada.service';
 import { EntradaPSede } from 'src/app/models/enporsede';
 
+
 @Component({
   selector: 'app-entrada',
   templateUrl: './entrada.component.html',
@@ -18,6 +19,7 @@ export class EntradaComponent implements OnInit {
   error: boolean;
   errorMessage: string;
   userlog: EntradaPSede;
+  EntOb: boolean;
 
   constructor(
     private sEntrada: EntradaService,
@@ -25,11 +27,20 @@ export class EntradaComponent implements OnInit {
     private router: Router
   ) {
     this.Ent = new Entrada;
+    this.EntOb = false;
     this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
   }
 
   ngOnInit() {
     this.entrada = true;
+  }
+
+  EntradaOb() {
+    this.EntOb = true;
+  }
+
+  EntradaNor() {
+    this.EntOb = false;
   }
 
   OnSubmit() {

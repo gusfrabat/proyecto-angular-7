@@ -1,26 +1,49 @@
 .login-container{
   box-shadow: 2px 4px #cccc;
   border-radius: 25px;
-  width: 390px;
+  width: 350px;
   height: 400px;
   /* background-color: rgba(236, 236, 236, 0.226); */
-  background-image: linear-gradient(to right, rgba(22, 22, 22, 0.048), rgba(226, 226, 226, 0.103));
+  /* background-image: linear-gradient(to right, rgba(22, 22, 22, 0.048), rgba(226, 226, 226, 0.103)); */
+}
+
+.contimg {
+  /* width: 100vw;
+  height: 100vh; */
+  /* background-image: url("../../assets/img/EmCart.jpg");
+  background-position: center center;
+  background-color: #464646; */
 }
 
 .alertCont {
-  margin-top: 18vh;
-  width: 390px;
-  height: 400px;
+  margin-top: 20vh;
 }
 
 .mtmenos{
-  margin-top: -6.5vh;
+  width: 350px;
+  margin-top: 2vh;
+  border-radius: 25px;
+  /* margin-bottom: 5vh; */
 }
 
 .cardLog {
+  -webkit-transform: translate3d(0, -50%, 0);
+  -moz-transform: translate3d(0, -50%, 0);
+  -o-transform: translate3d(0, -50%, 0);
+  -ms-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
   border-radius: 25px;
-  width: 390px;
-  height: 400px;
+  width: 175px;
+  height: 200px;
+  /* background-image: linear-gradient(to right, rgba(238, 238, 238, 0.767), rgb(255, 255, 255)); */
+}
+
+.carBodyLog {
+  -webkit-transform: translate3d(0, -10%, 0);
+  -moz-transform: translate3d(0, -10%, 0);
+  -o-transform: translate3d(0, -10%, 0);
+  -ms-transform: translate3d(0, -10%, 0);
+  transform: translate3d(0, -10%, 0);
 }
 
 .mat-progress-spinner{
@@ -29,20 +52,10 @@
 
 .inputfull {
   width: 100%;
-  margin-top: 2vh;
+  margin-top: 3vh;
+  border-radius: 25px;
 }
 
 .sizes {
   font-size: 10px;
 }
-
-svg path,
-svg rect{
-  fill: blue;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-}
-

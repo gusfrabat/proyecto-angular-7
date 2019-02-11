@@ -1,6 +1,19 @@
-.table-responsive{
+/* .table-responsive {
   overflow-y: scroll;
   height: 75vh;
   overflow-x: hidden;
+} */
+.example-container {
+  height: 75vh;
+  overflow: auto;
 }
 
+table {
+  width: 100%;
+}
+
+.titulo-tabla{
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}

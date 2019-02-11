@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           this.message = response.message;
           setTimeout(() => {
             this.Log = new Login;
-          }, 2000);
+          }, 1000);
 
           setTimeout(() => {
             this.alert = false;

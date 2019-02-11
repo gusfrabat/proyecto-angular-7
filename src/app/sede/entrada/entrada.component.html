@@ -1,14 +1,34 @@
- <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6 mx-auto contenedor-entrada">
-  <h2 class="text-center text-black-50">Entrada usuario</h2>
+<div *ngIf="!EntOb" class="col-sm-12 col-md-8 col-lg-6 col-xl-6 mx-auto contenedor-entrada">
+  <h2 class="text-center text-black-50">Entrada</h2>
   <form #formEntrada="ngForm" (ngSubmit)="OnSubmit()">
     <mat-form-field appearance="outline" class="inputfull">
-        <mat-label>Documento</mat-label>
-        <input matInput #documento="ngModel" name="documento" [(ngModel)]="Ent.documento" autocomplete="off" placeholder="Documento" autofocus>
-        <mat-icon matSuffix>person</mat-icon>
+      <mat-label>Documento</mat-label>
+      <input matInput #documento="ngModel" name="documento" [(ngModel)]="Ent.documento" autocomplete="off" placeholder="Documento"
+        autofocus>
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+  </form>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-info" (click)="EntradaOb()">Entrada con observaciones</button>
+  </div>
+</div>
+
+<div *ngIf="EntOb" class="col-sm-12 col-md-8 col-lg-6 col-xl-6 mx-auto contenedor-entrada">
+  <h2 class="text-center text-black-50">Entrada con observaciones</h2>
+  <form #formEntrada="ngForm" (ngSubmit)="OnSubmitOb()">
+    <mat-form-field appearance="outline" class="inputfull">
+      <mat-label>Documento</mat-label>
+      <input matInput #documento="ngModel" name="documento" [(ngModel)]="Ent.documento" autocomplete="off" placeholder="Documento"
+        autofocus>
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="inputfull">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput placeholder="Observaciones"></textarea>
       </mat-form-field>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-around">
       <button class="btn btn-sm btn-success">Entrada</button>
+      <button class="btn btn-info" (click)="EntradaNor()">Entrada normal</button>
     </div>
   </form>
 </div>
-
