@@ -7,13 +7,13 @@
   /* background-image: linear-gradient(to right, rgba(22, 22, 22, 0.048), rgba(226, 226, 226, 0.103)); */
 }
 
-.contimg {
-  /* width: 100vw;
-  height: 100vh; */
-  /* background-image: url("../../assets/img/EmCart.jpg");
+/* .contimg {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../assets/img/EmCart.jpg");
   background-position: center center;
-  background-color: #464646; */
-}
+  background-color: #464646;
+} */
 
 .alertCont {
   margin-top: 20vh;
@@ -58,4 +58,14 @@
 
 .sizes {
   font-size: 10px;
+}
+
+@media (max-width:320px) {
+  .login-container{
+    width: 320px;
+    height: 380px;
+  }
+  .alertCont {
+    margin-top: 10vh;
+  }
 }

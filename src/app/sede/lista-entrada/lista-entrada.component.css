@@ -17,3 +17,14 @@ table {
   font-size: 15px;
   font-weight: bold;
 }
+@media (max-width: 767px) {
+  .noned {
+    display: none;
+  }
+}
+
+@media (max-width: 411px) {
+  .noneM {
+    display: none;
+  }
+}

@@ -49,6 +49,10 @@ export class EntradaComponent implements OnInit {
 
   addEntradaUsu() {
     this.Ent.id_sede = this.userlog.id_sede;
+    if (!this.Ent.id_sede) {
+      this.Ent.id_sede = null;
+      console.log('entro');
+    }
     this.sEntrada.addEntrada(this.Ent).subscribe(
       response => {
         if (response.code === 200) {

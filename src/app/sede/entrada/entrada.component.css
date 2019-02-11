@@ -8,7 +8,13 @@
 }
 
 .inputfull {
-  width:  100%;
+  width: 100%;
+}
+
+@media (max-width:320px) {
+  .mtCal {
+    margin-top: 10vh;
+  }
 }
 
 /* soporte en calidad de una impresora */

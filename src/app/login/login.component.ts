@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../models/login';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +25,11 @@ export class LoginComponent implements OnInit {
   ) {
     this.Log = new Login;
     this.loading = false;
+
   }
 
   ngOnInit() {
+
   }
 
   onSubmit() {
@@ -62,6 +65,6 @@ export class LoginComponent implements OnInit {
             this.alert = false;
           }, 4000);
         }
-      });
+    });
   }
 }

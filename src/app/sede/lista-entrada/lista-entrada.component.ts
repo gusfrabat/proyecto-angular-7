@@ -18,8 +18,9 @@ export class ListaEntradaComponent implements OnInit {
   putamalparida: EntradaPSede;
   userlog: EntradaPSede;
   EntU: EntradaS;
-  displayedColumns: string[] = ['sede', 'nombres', 'apellidos', 'documento', 'entrada', 'salida', 'dif'];
+  displayedColumns: string[] = ['sede', 'nombres', 'documento', 'entrada', 'salida', 'dif'];
   dataSource = new MatTableDataSource<Entrada>();
+  date: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -29,7 +30,8 @@ export class ListaEntradaComponent implements OnInit {
     this.url = GLOBAL.url;
     this.EntU = new EntradaS;
     this.userlog = JSON.parse(sessionStorage.getItem('usuario'));
-    console.log(this.userlog.id_sede);
+    this.date = new Date();
+
   }
 
   ngOnInit() {
